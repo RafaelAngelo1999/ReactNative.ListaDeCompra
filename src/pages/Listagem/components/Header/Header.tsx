@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { Plus } from "react-native-feather";
 import { Button, Text } from "react-native";
 
 interface IHeaderProps {
@@ -13,7 +12,7 @@ const Header: FC<IHeaderProps> = ({ navigation }) => {
         Minha Lista
       </Text>
       <Button title={"Add Item"} onPress={() => navigation.push("Manipular")}>
-        <Plus />
+        +
       </Button>
     </>
   );
