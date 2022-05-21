@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Produto } from "../../../../store/slices/ListaDeComprasSlice";
 import { View, StyleSheet } from "react-native";
 import { DataTable } from "react-native-paper";
-import { Text } from "@react-native-material/core";
+import { Text } from "react-native";
 
 interface IListaProps {
   navigation: any;
@@ -41,11 +41,8 @@ const Lista: FC<IListaProps> = ({ navigation, lista }) => {
       </View>
     </>
   ) : (
-    <Text
-      style={{ marginTop: 50, textAlign: "center", color: "grey" }}
-      variant="h3"
-    >
-      Lista vazia :(
+    <Text style={{ fontWeight: "bold", textAlign: "center", paddingTop: 10 }}>
+      {"Lista vazia :("}
     </Text>
   );
 };

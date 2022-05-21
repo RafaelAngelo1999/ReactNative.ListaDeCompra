@@ -1,5 +1,5 @@
-import { Text } from "@react-native-material/core";
 import React, { FC } from "react";
+import { Text } from "react-native";
 
 interface IHeaderProps {
   isEdit: boolean;
@@ -7,10 +7,7 @@ interface IHeaderProps {
 
 const Header: FC<IHeaderProps> = ({ isEdit }) => {
   return (
-    <Text
-      variant="h4"
-      style={{ fontWeight: "bold", textAlign: "center", paddingTop: 10 }}
-    >
+    <Text style={{ fontWeight: "bold", textAlign: "center", paddingTop: 10 }}>
       {isEdit ? "Edição produto" : "Criação produto"}
     </Text>
   );

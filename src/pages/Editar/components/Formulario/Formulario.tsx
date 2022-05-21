@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import RNPickerSelect from "react-native-picker-select";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +11,7 @@ import {
 } from "../../../../store/slices/ListaDeComprasSlice";
 import { categorias } from "../../../../shared/models/IItem";
 import { Box } from "react-native-flex-layout";
-import { Button, TextInput } from "@react-native-material/core";
+import { Button, TextInput, StyleSheet, Text } from "react-native";
 
 interface IFormularioProps {
   idProduto: string | undefined;
@@ -92,13 +92,20 @@ const Formulario: FC<IFormularioProps> = ({
         defaultValue=""
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <Box mb={4}>
+            <Text
+              style={{
+                fontWeight: "bold",
+                paddingTop: 10,
+                marginLeft: 15,
+              }}
+            >
+              Nome
+            </Text>
             <TextInput
-              label="Nome"
-              variant="outlined"
+              placeholder="Nome"
               value={value}
               onChangeText={onChange}
-              style={{ margin: 16 }}
-              helperText={error ? error.message : undefined}
+              style={styles.textInputStyle}
             />
           </Box>
         )}
@@ -136,15 +143,24 @@ const Formulario: FC<IFormularioProps> = ({
         control={control}
         defaultValue=""
         render={({ field: { onChange, value }, fieldState: { error } }) => (
-          <TextInput
-            keyboardType="numeric"
-            label="Quantidade"
-            variant="outlined"
-            value={value}
-            onChangeText={onChange}
-            style={{ margin: 16 }}
-            helperText={error ? error.message : undefined}
-          ></TextInput>
+          <Box mb={4}>
+            <Text
+              style={{
+                fontWeight: "bold",
+                paddingTop: 10,
+                marginLeft: 15,
+              }}
+            >
+              Quantidade
+            </Text>
+            <TextInput
+              placeholder="Quantidade"
+              keyboardType="numeric"
+              value={value}
+              onChangeText={onChange}
+              style={styles.textInputStyle}
+            ></TextInput>
+          </Box>
         )}
         rules={{
           required: "Quantidade Obrigatoria",
@@ -156,29 +172,28 @@ const Formulario: FC<IFormularioProps> = ({
       />
       <Button
         title={isEdit ? "Editar" : "Criar"}
-        variant="contained"
         onPress={handleSubmit((data) => {
           editarOuCriarProduto(data as Produto);
         })}
       ></Button>
-      {isEdit && (
-        <Button
-          title={"Excluir"}
-          onPress={excluirProduto}
-          variant="contained"
-          style={{ marginTop: 3 }}
-        ></Button>
-      )}
+      {isEdit && <Button title={"Excluir"} onPress={excluirProduto}></Button>}
       <Button
         title={"Voltar"}
         onPress={() => {
           navigation.navigate("Lista");
         }}
-        variant="contained"
-        style={{ marginTop: 3 }}
       ></Button>
     </Box>
   );
 };
+
+const styles = StyleSheet.create({
+  textInputStyle: {
+    marginHorizontal: 15,
+    paddingHorizontal: 30,
+    marginVertical: 10,
+    borderWidth: 0.5,
+  },
+});
 
 export default Formulario;

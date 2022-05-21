@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import { Plus } from "react-native-feather";
-import { Text } from "@react-native-material/core";
-import { Button } from "@react-native-material/core";
+import { Button, Text } from "react-native";
 
 interface IHeaderProps {
   navigation: any;
@@ -10,18 +9,10 @@ interface IHeaderProps {
 const Header: FC<IHeaderProps> = ({ navigation }) => {
   return (
     <>
-      <Text
-        variant="h4"
-        style={{ fontWeight: "bold", textAlign: "center", paddingTop: 10 }}
-      >
+      <Text style={{ fontWeight: "bold", textAlign: "center", paddingTop: 10 }}>
         Minha Lista
       </Text>
-      <Button
-        title={"Add Item"}
-        onPress={() => navigation.push("Manipular")}
-        variant="contained"
-        style={{ marginTop: 3 }}
-      >
+      <Button title={"Add Item"} onPress={() => navigation.push("Manipular")}>
         <Plus />
       </Button>
     </>
