@@ -10,8 +10,7 @@ import {
   atualizarProduto,
 } from "../../../../store/slices/ListaDeComprasSlice";
 import { categorias } from "../../../../shared/models/IItem";
-import { Box } from "react-native-flex-layout";
-import { Button, TextInput, StyleSheet, Text } from "react-native";
+import { Button, TextInput, StyleSheet, Text, View } from "react-native";
 
 interface IFormularioProps {
   idProduto: string | undefined;
@@ -85,13 +84,13 @@ const Formulario: FC<IFormularioProps> = ({
   };
 
   return (
-    <Box style={{ marginTop: 1 }}>
+    <View style={{ marginTop: 1 }}>
       <Controller
         name="nome"
         control={control}
         defaultValue=""
         render={({ field: { onChange, value }, fieldState: { error } }) => (
-          <Box mb={4}>
+          <View style={{ marginBottom: 4 }}>
             <Text
               style={{
                 fontWeight: "bold",
@@ -107,7 +106,7 @@ const Formulario: FC<IFormularioProps> = ({
               onChangeText={onChange}
               style={styles.textInputStyle}
             />
-          </Box>
+          </View>
         )}
         rules={{
           required: "Nome é obrigatorio",
@@ -122,7 +121,7 @@ const Formulario: FC<IFormularioProps> = ({
         control={control}
         defaultValue=""
         render={({ field: { onChange, value }, fieldState: { error } }) => (
-          <Box>
+          <View>
             <RNPickerSelect
               style={pickerStyle}
               value={value}
@@ -132,7 +131,7 @@ const Formulario: FC<IFormularioProps> = ({
                 value: option.value,
               }))}
             ></RNPickerSelect>
-          </Box>
+          </View>
         )}
         rules={{
           required: "Categoria obrigatoria",
@@ -143,7 +142,7 @@ const Formulario: FC<IFormularioProps> = ({
         control={control}
         defaultValue=""
         render={({ field: { onChange, value }, fieldState: { error } }) => (
-          <Box mb={4}>
+          <View style={{ marginBottom: 4 }}>
             <Text
               style={{
                 fontWeight: "bold",
@@ -160,7 +159,7 @@ const Formulario: FC<IFormularioProps> = ({
               onChangeText={onChange}
               style={styles.textInputStyle}
             ></TextInput>
-          </Box>
+          </View>
         )}
         rules={{
           required: "Quantidade Obrigatoria",
@@ -183,7 +182,7 @@ const Formulario: FC<IFormularioProps> = ({
           navigation.navigate("Lista");
         }}
       ></Button>
-    </Box>
+    </View>
   );
 };
 
