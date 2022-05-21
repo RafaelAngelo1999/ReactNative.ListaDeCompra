@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { Provider } from "react-redux";
 import { store } from "./src/store";
+import React from "react";
 // import { AppBar } from "@react-native-material/core";
 import Manipular from "./src/pages/Editar/views/Manipular";
 import Listagem from "./src/pages/Listagem/views/Listagem";
